@@ -17,21 +17,31 @@ export default function RegisterScreen() {
       <LogoHolder logoSource={require('../../assets/tabLogo.png')}/>
       <Heading type="h1" userStyle={{fontStyle:"italic"}}>Register</Heading>
       <Formik
-        initialValues={{ identifier: 'Parth', password: '',confirmPassword:"" }}
+        initialValues={{ username: '',phone:"", password: '', }}
         validationSchema={RegisterValidationSchema}
-        onSubmit={values => console.log(values)}
+        onSubmit={values =>console.log(values)}
       >
         {({ handleChange, handleBlur, handleSubmit, values,errors, touched }) => (
           <View style={styles.formContainer}>
             <AuthInput
-              name={"identifier"}
-              placeholder={"Email/Phone"}
-              handleChange={handleChange("identifier")}
-              handleBlur={handleBlur("identifier")}
-              value={values.identifier}
+              name={"username"}
+              placeholder={"Username"}
+              handleChange={handleChange("username")}
+              handleBlur={handleBlur("username")}
+              value={values.username}
               keyboardType={"default"}
-              error={errors.identifier}
-              touched={touched.identifier}
+              error={errors.username}
+              touched={touched.username}
+            />
+            <AuthInput
+              name={"phone"}
+              placeholder={"Phone"}
+              handleChange={handleChange("phone")}
+              handleBlur={handleBlur("phone")}
+              value={values.phone}
+              keyboardType="phone-pad"
+              error={errors.phone}
+              touched={touched.phone}
             />
             <PasswordInput
               name="password"
@@ -43,17 +53,7 @@ export default function RegisterScreen() {
               error={errors.password}
               touched={touched.password}
             />
-            <PasswordInput
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              value={values.confirmPassword}
-              handleChange={handleChange("confirmPassword")}
-              handleBlur={handleBlur("confirmPassword")}
-              keyboardType="default"
-              error={errors.confirmPassword}
-              touched={touched.confirmPassword}
-            />
-            <Button title="Submit" onPress={() => handleSubmit()} />
+            <PrimaryAuthButton text={"Submit"} onSubmit={handleSubmit}/>
           </View>
         )}
       </Formik>
@@ -63,6 +63,7 @@ export default function RegisterScreen() {
 
 const styles=StyleSheet.create({
   formContainer:{
+    flex: 1,
     width:"100%",
   }
 })

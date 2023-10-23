@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Text, StyleSheet, TextStyle } from 'react-native';
+import globals from '../../assets/constants/globals';
 
 interface HeadingProps {
   type: 'h1' | 'h2' | 'h3';
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
     fontSize: 24, // Default font size
     fontWeight: 'bold', // Default font weight
     marginBottom: 10, // Default margin
+    color:globals.headingColor
   },
   h1: {
     fontSize: 32,

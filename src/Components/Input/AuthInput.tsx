@@ -1,6 +1,7 @@
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 import React from 'react';
 import { AntDesign } from '@expo/vector-icons';
+import globals from '../../assets/constants/globals';
 
 interface AuthInputProps {
   name: string;
@@ -27,7 +28,7 @@ const AuthInput: React.FC<AuthInputProps> = ({
   return (
     <View style={styles.inputContainer}>
       <View style={styles.inputBox}>
-        <AntDesign name="mail" size={40} color="red" />
+        <AntDesign name="mail" size={40} color={globals.primaryColor} />
         <TextInput
           placeholder={placeholder}
           value={value}
@@ -65,8 +66,8 @@ const styles = StyleSheet.create({
     // Border Settings
     borderBottomWidth: 2,
     borderRightWidth: 2,
-    borderColor: 'red',
-    shadowColor: 'red',
+    borderColor: globals.primaryColor,
+    shadowColor: globals.primaryColor,
     borderTopWidth: 1,
     borderLeftWidth: 1,
     shadowOffset: { width: 6, height: 6 },
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   errorMessage: {
-    color: 'red',
+    color: globals.errorColor,
     marginTop:8,
     fontWeight:"600",
     fontSize: 16,

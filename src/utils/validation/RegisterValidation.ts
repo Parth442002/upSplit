@@ -1,20 +1,21 @@
 import * as Yup from 'yup';
 
 const RegisterValidationSchema = Yup.object().shape({
-  identifier: Yup.string()
-    .required('Identifier is required')
-    .test('valid-identifier', 'Invalid identifier', (value) => {
-      if (!value) return false; // Return false if empty
-      const phonePattern = /^[0-9]{10}$/; // 10-digit phone number pattern
-      const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/; // Email pattern
-      return phonePattern.test(value) || emailPattern.test(value);
+  phone: Yup.string()
+    .required('Number is required')
+    .test('Valid Phone Number', 'Invalid Phone Number', (value) => {
+      if (!value) return false;
+      const phonePattern = /^[0-9]{10}$/;
+      return phonePattern.test(value)
     }),
+  username:Yup.string()
+    .required("Username is Required")
+    .min(5,"Username must be atleast 5 characters long")
+    .max(15,"Username must be less than 15 characters")
+  ,
   password: Yup.string()
     .required('Password is required')
     .min(8, 'Password must be at least 8 characters long'),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password'),], 'Passwords must match')
-    .required('Confirm Password is required'),
 });
 
 export default RegisterValidationSchema;

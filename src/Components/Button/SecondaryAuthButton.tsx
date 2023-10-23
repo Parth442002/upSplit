@@ -2,12 +2,12 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import globals from '../../assets/constants/globals'
 
-interface PrimaryAuthButtonProps {
+interface SecondaryAuthButtonProps {
   text: string;
   onSubmit: () => void;
 }
 
-const PrimaryAuthButton: React.FC<PrimaryAuthButtonProps> = ({ text, onSubmit }) => {
+const SecondaryAuthButton: React.FC<SecondaryAuthButtonProps> = ({ text, onSubmit }) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onSubmit}>
       <Text style={styles.text}>{text}</Text>
@@ -15,7 +15,7 @@ const PrimaryAuthButton: React.FC<PrimaryAuthButtonProps> = ({ text, onSubmit })
   );
 };
 
-export default PrimaryAuthButton;
+export default SecondaryAuthButton;
 
 const styles = StyleSheet.create({
   container: {
@@ -25,13 +25,10 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 12,
     elevation: 5,
-    borderBottomWidth: 2,
-    borderRightWidth: 2,
-    backgroundColor: globals.primaryColor,
+    backgroundColor: globals.backgroundColor,
     borderColor: globals.headingColor,
+    borderWidth:1,
     shadowColor: globals.headingColor,
-    borderTopWidth: 1,
-    borderLeftWidth: 1,
     shadowOffset: { width: 6, height: 6 },
     shadowOpacity: 1,
     shadowRadius: 0,

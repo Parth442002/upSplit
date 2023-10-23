@@ -2,6 +2,7 @@
 
 import React, { ReactNode } from 'react';
 import { View, StyleSheet, SafeAreaView } from 'react-native';
+import globals from '../assets/constants/globals';
 
 interface BaseScreenProps {
   children: ReactNode;
@@ -20,7 +21,7 @@ const BaseScreen = ({ children }: BaseScreenProps) => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: 'white', // You can set the background color here
+    backgroundColor:globals.backgroundColor
   },
   container: {
     flex: 1,

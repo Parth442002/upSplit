@@ -8,7 +8,6 @@ interface LogoHolderProps {
 }
 
 const LogoHolder: React.FC<LogoHolderProps> = ({ logoSource, size, style }) => {
-  console.log(logoSource,"this should workd")
   const containerStyle = [styles.container, style];
   return (
     <View style={containerStyle}>

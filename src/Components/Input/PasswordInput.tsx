@@ -1,6 +1,7 @@
 import { View, Text ,TextInput,StyleSheet, Dimensions, TouchableOpacity} from 'react-native'
 import React, { useState } from 'react'
 import { AntDesign } from '@expo/vector-icons'
+import globals from '../../assets/constants/globals';
 
 interface PasswordInputProps {
   name: string;
@@ -31,7 +32,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
         <AntDesign
           name="lock"
           size={40}
-          color="red"
+          color={globals.primaryColor}
         />
         <TextInput
           placeholder={placeholder}
@@ -51,7 +52,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
           <AntDesign
             name={visible?"eye":"eyeo"}
             size={40}
-            color="red"
+            color={globals.primaryColor}
           />
         </TouchableOpacity>
       </View>
@@ -84,8 +85,8 @@ const styles=StyleSheet.create({
     //Border Settings
     borderBottomWidth:2,
     borderRightWidth:2,
-    borderColor:"red",
-    shadowColor: "red",
+    borderColor:globals.primaryColor,
+    shadowColor: globals.primaryColor,
     borderTopWidth:1,
     borderLeftWidth:1,
     shadowOffset: { width: 6, height: 6 },
@@ -101,7 +102,7 @@ const styles=StyleSheet.create({
     backgroundColor:"white",
   },
   errorMessage: {
-    color: 'red',
+    color: globals.errorColor,
     marginTop:8,
     fontWeight:"600",
     fontSize: 16,
