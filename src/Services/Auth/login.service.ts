@@ -1,5 +1,5 @@
 import axios, { AxiosResponse, AxiosError } from 'axios';
-
+import Api from '../Api';
 interface LoginResponse {
   success: boolean;
   data?: any;
@@ -8,7 +8,7 @@ interface LoginResponse {
 
 export const loginService = async (phoneNumber: string,password: string): Promise<LoginResponse> => {
   try {
-    const response: AxiosResponse = await axios.post('http://13.235.13.201:8000/auth/login/', {
+    const response: AxiosResponse = await Api.post('auth/login/', {
       phoneNumber: phoneNumber,
       password: password,
     });
@@ -17,6 +17,6 @@ export const loginService = async (phoneNumber: string,password: string): Promis
     const axiosError = error as AxiosError;
     const errorMessage = axiosError.response?.data || 'An error occurred';
 
-    return { success: false, error: errorMessage };
+    return { success: false, error: JSON.stringify(errorMessage) };
   }
 };

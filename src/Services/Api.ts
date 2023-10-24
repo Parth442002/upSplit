@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const Api = axios.create({
-  baseURL: 'http://localhost:8000/',
+  baseURL: 'http://43.204.36.247:8000/',
 });
 
 // Interceptor to attach the JWT token to the request headers
@@ -15,7 +15,7 @@ Api.interceptors.request.use(
         config.headers['x-access-token'] = token;
       }
     } catch (error) {
-      console.log(error,"wtf")
+      console.log(error,"Token Error")
     }
     return config;
   },
