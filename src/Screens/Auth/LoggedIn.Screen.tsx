@@ -4,13 +4,13 @@ import BaseScreen from "../../HOC/base.Screen";
 
 
 interface LoginScreenProps{
-  navigation:any
+  navigation:any,
+  route:any,
 }
-const LoggedInScreen = ({ navigation }: LoginScreenProps) => {
-  console.log("This is the loggedIn Screen")
+const LoggedInScreen = ({ route,navigation }: LoginScreenProps) => {
   return(
     <BaseScreen>
-      <Text style={{color:"white"}}>{JSON.stringify(navigation.params)}</Text>
+      <Text style={{color:"white"}}>{JSON.stringify(route.params.userData)}</Text>
     </BaseScreen>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { Formik } from 'formik';
 import BaseScreen from '../../HOC/base.Screen';
@@ -8,7 +8,7 @@ import PrimaryAuthButton from '../../Components/Button/PrimaryAuthButton';
 import PasswordInput from '../../Components/Input/PasswordInput';
 import AuthInput from '../../Components/Input/AuthInput';
 import LoginValidationSchema from '../../utils/validation/LoginValidation';
-import { loginService } from '../../Services/Auth/login.service';
+import { loginService } from '../../Services/Auth/Auth.service';
 import SecondaryAuthButton from '../../Components/Button/SecondaryAuthButton';
 import { storeUserData } from '../../utils/Async/saveRetriveAsync';
 import LoadingScreen from '../Misc/Loading.Screen';
@@ -26,12 +26,12 @@ const LoginScreen = ({ navigation }:loginScreenProps) => {
     setError(false);
 
     const response = await loginService(phoneNumber, password);
+    console.log(response)
     if (response.success) {
       await storeUserData(response.data);
       setTimeout(() => {
         setLoading(false);
       }, 2000);
-      console.log('User Data is stored successfully');
       navigation.navigate("LoggedIn", { userData: response.data });
     } else {
       setLoading(false)
@@ -54,7 +54,7 @@ const LoginScreen = ({ navigation }:loginScreenProps) => {
           Login
         </Heading>
         <Formik
-          initialValues={{ phoneNumber: '9026971112', password: 'parthx' }}
+          initialValues={{ phoneNumber: '', password: '' }}
           validationSchema={LoginValidationSchema}
           onSubmit={values => onLogin(values.phoneNumber, values.password)}
         >
@@ -80,8 +80,8 @@ const LoginScreen = ({ navigation }:loginScreenProps) => {
                 error={errors.password}
                 touched={touched.password}
               />
-              <PrimaryAuthButton text={'Submit'} onSubmit={handleSubmit} />
-              <SecondaryAuthButton text={'Register Now'} onSubmit={() => console.log('Register now')} />
+              <PrimaryAuthButton text={'Login'} onSubmit={handleSubmit} />
+              <SecondaryAuthButton text={'Register Now'} onSubmit={() => navigation.navigate("Register")} />
             </View>
           )}
         </Formik>

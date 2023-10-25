@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 const RegisterValidationSchema = Yup.object().shape({
-  phone: Yup.string()
+  phoneNumber: Yup.string()
     .required('Number is required')
     .test('Valid Phone Number', 'Invalid Phone Number', (value) => {
       if (!value) return false;
@@ -15,7 +15,7 @@ const RegisterValidationSchema = Yup.object().shape({
   ,
   password: Yup.string()
     .required('Password is required')
-    .min(8, 'Password must be at least 8 characters long'),
+    .min(5, 'Password must be at least 5 characters long'),
 });
 
 export default RegisterValidationSchema;
