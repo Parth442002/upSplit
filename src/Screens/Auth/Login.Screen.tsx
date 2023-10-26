@@ -32,7 +32,7 @@ const LoginScreen = ({ navigation }:loginScreenProps) => {
       setTimeout(() => {
         setLoading(false);
       }, 2000);
-      navigation.navigate("Main", {screen:"Home", userData: response.data });
+      navigation.navigate("Main", {screen:"HomeStack", userData: response.data });
     } else {
       setLoading(false)
       setError(true);

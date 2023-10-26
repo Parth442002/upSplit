@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 function ParentNavigator() {
   return (
       <Stack.Navigator
-        initialRouteName='Auth'
+        initialRouteName='Main'
         screenOptions={{
           headerShown:false,
         }}

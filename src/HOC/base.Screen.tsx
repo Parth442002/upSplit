@@ -1,14 +1,22 @@
-// BaseScreen.tsx
-
 import React, { ReactNode } from 'react';
-import { View, StyleSheet, SafeAreaView } from 'react-native';
-import globals from '../assets/constants/globals';
+import { View, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 
 interface BaseScreenProps {
   children: ReactNode;
+  scrollable?: boolean; // Add scrollable property
 }
 
-const BaseScreen = ({ children }: BaseScreenProps) => {
+const BaseScreen = ({ children, scrollable = false }: BaseScreenProps) => {
+  if (scrollable) {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          {children}
+        </ScrollView>
+      </SafeAreaView>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -16,18 +24,24 @@ const BaseScreen = ({ children }: BaseScreenProps) => {
       </View>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor:globals.backgroundColor
+    backgroundColor: 'white',
   },
   container: {
     flex: 1,
-    justifyContent: "flex-start",
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    padding: 16, // You can customize the padding or other styles here
+    padding: 16,
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    padding: 16,
   },
 });
 
