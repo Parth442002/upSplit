@@ -8,6 +8,7 @@ import SampleScreen from '../Screens/Sample.Screen';
 import HomeScreen from '../Screens/Main/Home.Screen';
 import HomeNavigator from './HomeNavigator';
 import FriendsNavigator from './FriendsNavigator';
+import GroupNavigator from './GroupNavigator';
 
 MaterialCommunityIcons.loadFont();
 
@@ -36,7 +37,7 @@ const BottomTabNavigator: React.FC = () => {
 
           if (route.name === 'HomeStack') {
             iconName = 'home';
-          } else if (route.name === 'Groups') {
+          } else if (route.name === 'GroupsStack') {
             iconName = 'account-group';
           } else if (route.name === 'Add Expense') {
             iconName = 'plus-circle';
@@ -56,7 +57,7 @@ const BottomTabNavigator: React.FC = () => {
       })}
     >
       <Tab.Screen name="HomeStack" component={HomeNavigator} options={{headerShown:false}} />
-      <Tab.Screen name="Groups" component={SampleScreen} />
+      <Tab.Screen name="GroupsStack" component={GroupNavigator} options={{headerShown:false}} />
       <Tab.Screen
         name="Add Expense"
         component={SampleScreen}
