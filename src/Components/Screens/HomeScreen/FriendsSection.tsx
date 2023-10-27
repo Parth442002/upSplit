@@ -4,11 +4,9 @@ import FriendItem from '../../Card/FriendCard';
 
 interface FriendsSectionProps {
   navigation:any,
-  _id: string;
-  username: string;
 }
 
-const FriendsSection = ({ navigation,_id, username }: FriendsSectionProps) => {
+const FriendsSection = ({ navigation }: FriendsSectionProps) => {
   const friendsData = [
     { id: '1', name: 'Friend 1' },
     { id: '2', name: 'Friend 2' },

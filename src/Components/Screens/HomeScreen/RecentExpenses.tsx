@@ -4,11 +4,9 @@ import ExpenseCard from '../../Card/ExpenseCard';
 
 interface RecentExpenseProps {
   navigation:any,
-  _id: string;
-  username:string,
 }
 
-const RecentExpenses = ({ navigation,_id,username }: RecentExpenseProps) => {
+const RecentExpenses = ({ navigation }: RecentExpenseProps) => {
   const recentExpensesData = [
     { id: '1', title: 'Expense 1', amount: '$50.00' },
     { id: '2', title: 'Expense 2', amount: '$25.00' },

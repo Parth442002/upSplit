@@ -11,10 +11,11 @@ export default function IndividualGroupScreen({navigation,route,}:IndividualGrou
   const data=route.params
   return (
     <BaseScreen>
-      <Text style={{fontSize:24,marginVertical:16}}>This is the individual Group Screen</Text>
+      <Text style={{fontSize:24,marginVertical:16}}>{data.group.groupName} Screen</Text>
       <Text>{JSON.stringify(data)}</Text>
     </BaseScreen>
   )
 }
 
 const styles = StyleSheet.create({})
+

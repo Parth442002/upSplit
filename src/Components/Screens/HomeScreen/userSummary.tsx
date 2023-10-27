@@ -1,13 +1,16 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { FontAwesome5 } from '@expo/vector-icons';
+import { useUserData } from '../../../Context/userDataContext'
 
-interface TopBarProps{
+interface UserSummaryProps{
   navigation:any,
-  _id: string;
-  username:string,
 }
-const UserSummary = ({navigation,_id,username}:TopBarProps) => {
+const UserSummary = ({navigation}:UserSummaryProps) => {
+  const {userData,setUserData}=useUserData()
+  if(! userData){
+    return
+  }
   return (
     <TouchableOpacity style={styles.container} onPress={()=>navigation.navigate("HomeStack",{screen:"Summary"})}>
       <Text style={styles.myBalance}>My Balance</Text>
